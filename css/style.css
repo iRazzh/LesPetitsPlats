@@ -180,26 +180,50 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 2rem;
 }
-.recipes--article__section-description--header__timer {
+.recipes--article__section-description--header__title {
+  width: 70%;
+}
+.recipes--article__section-description--header__block {
   display: flex;
   align-items: center;
 }
-.recipes--article__section-description--header__timer img {
+.recipes--article__section-description--header__block--timer {
+  font-size: 20px;
+}
+.recipes--article__section-description--header__block img {
   margin-left: 0.5rem;
-  width: 15px;
+  width: 20px;
 }
 .recipes--article__section-description--aside {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 150px;
+  height: 150px;
 }
 .recipes--article__section-description--aside__list {
-  width: 30%;
+  width: 45%;
   list-style: none;
 }
+.recipes--article__section-description--aside__list--all {
+  font-style: italic;
+}
+.recipes--article__section-description--aside__list--all__name {
+  font-weight: bold;
+  font-style: normal;
+}
 .recipes--article__section-description--aside__content {
-  width: 60%;
+  width: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.recipes--appliance, .recipes--ustensils--section {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

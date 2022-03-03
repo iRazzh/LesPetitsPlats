@@ -164,12 +164,19 @@
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
-                &__timer{
+                margin-bottom: 2rem;
+                &__title{
+                    width: 70%;
+                }
+                &__block{
                     display: flex;
                     align-items: center;
+                    &--timer{
+                        font-size: 20px;
+                    }
                     img{
                         margin-left: 0.5rem;
-                        width: 15px;
+                        width: 20px;
                     }
                 }
             }
@@ -177,14 +184,30 @@
                 margin-top: 1rem;
                 display: flex;
                 justify-content: space-between;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-height: 150px;
+                height: 150px;
                 &__list{
-                    width: 30%;
+                    width: 45%;
                     list-style: none;
+                    &--all{
+                        font-style: italic;
+                        &__name{
+                            font-weight: bold;
+                            font-style: normal;
+                        }
+                    }
                 }
                 &__content{
-                    width: 60%;
+                    width: 50%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;   
                 }
             }
         }
     }
+}
+.recipes--appliance, .recipes--ustensils--section{
+    display: none;
 }
