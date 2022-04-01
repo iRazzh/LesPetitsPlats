@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/iRazzh/LesPetitsPlats/issues"
   },
-  "homepage": "https://github.com/iRazzh/LesPetitsPlats#readme"
+  "homepage": "https://github.com/iRazzh/LesPetitsPlats#readme",
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
 }

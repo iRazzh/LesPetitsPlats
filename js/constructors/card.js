@@ -1,7 +1,3 @@
-// Mets toutes les recettes en Object
-let allRecipesObject = Object.entries(recipes);
-console.log(allRecipesObject)
-
 // Va me permettre de créer tous les éléments du DOM | Helper function
 const newElt = (elm, attributes) => {
     const element = document.createElement(elm);
@@ -15,7 +11,6 @@ const newElt = (elm, attributes) => {
 let cardRecipes = (recipe) => {
     // Construis le fond gris
     let img = newElt("div", {class: "recipes--article__bg-grey", alt: "Image d'une carte"});
-
     
     // Construis le titre
     let title = newElt("h2", {class: "recipes--article__section-description--header__title"});
@@ -30,19 +25,24 @@ let cardRecipes = (recipe) => {
     let header = newElt("header", {class: "recipes--article__section-description--header"});
     header.appendChild(title);
     header.appendChild(timer);
-
+    
     // Section ingredients en appendChild tous les ingrédients
     let ingredients = newElt("ul", {class: "recipes--article__section-description--aside__list"})
     
     // Tous les ingrédients avec 3 conditions
     let eachIngredients = recipe[1].ingredients.map(function(ingredients) {
-        if (Object.prototype.hasOwnProperty.call(ingredients, "quantity") && Object.prototype.hasOwnProperty.call(ingredients, "unit")) {
-            return `<li class="recipes--article__section-description--aside__list--all"><span class="recipes--article__section-description--aside__list--all__name">${ingredients.ingredient}</span>: ${ingredients.quantity} ${ingredients.unit}</li>`
-        } else if(Object.prototype.hasOwnProperty.call(ingredients, "quantity") && !Object.prototype.hasOwnProperty.call(ingredients, "unit")) {
-            return `<li class="recipes--article__section-description--aside__list--all"><span class="recipes--article__section-description--aside__list--all__name">${ingredients.ingredient}</span>: ${ingredients.quantity}</li>`
-        } else if(!Object.prototype.hasOwnProperty.call(ingredients, "quantity") && !Object.prototype.hasOwnProperty.call(ingredients, "unit")) {
-            return `<li class="recipes--article__section-description--aside__list--all"><span class="recipes--article__section-description--aside__list--all__name">${ingredients.ingredient}</span></li>`
+
+        let quantityObject = Object.prototype.hasOwnProperty.call(ingredients, "quantity");
+        let unitObject = Object.prototype.hasOwnProperty.call(ingredients, "unit");
+
+        let quantityUnitStr = "";
+
+        if (quantityObject && unitObject) {
+            quantityUnitStr = `: ${ingredients.quantity} ${ingredients.unit}`;
+        } else if (quantityObject && !unitObject) {
+            quantityUnitStr = `: ${ingredients.quantity}`;
         }
+        return `<li class="recipes--article__section-description--aside__list--all"><span class="recipes--article__section-description--aside__list--all__name">${ingredients.ingredient}</span>${quantityUnitStr}</li>`
     }).join("");
     
     // La section "ingredients" innerHTML tous les ingrédients
@@ -84,11 +84,7 @@ let cardRecipes = (recipe) => {
     articleContent.appendChild(img);
     articleContent.appendChild(bodyContent);
     
-    
     // Section qui englobe tout des cartes 
     let sectionRecipes = document.getElementById("allRecipes");
     sectionRecipes.appendChild(articleContent);
 }
-
-// Va display toutes les recettes.
-allRecipesObject.forEach(recipe => cardRecipes(recipe));

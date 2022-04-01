@@ -1,12 +1,12 @@
-// const generateRecipes = (recipes) => {
-//     // 3 variables comprenant 3 tableaux qui vont stocker les valeurs de chacunes des données correspondantes.
-//     let ingredients = [];
-//     let apparatus = [];
-//     let ustensils = [];
+localStorage.clear();
 
-//     recipes.forEach((recipe) => {
-//         // .... 
+localStorage.setItem("recipes", JSON.stringify(recipes));
 
-//     })
-// }
+// Mets toutes les recettes en Object
+let allRecipesObject = Object.entries(recipes);
 
+// Va display toutes les recettes.
+allRecipesObject.forEach(recipe => cardRecipes(recipe));
+
+// Va afficher toutes les filtres
+displayFilters(recipes);
