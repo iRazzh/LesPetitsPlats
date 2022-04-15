@@ -8,5 +8,5 @@ let allRecipesObject = Object.entries(recipes);
 // Va display toutes les recettes.
 allRecipesObject.forEach(recipe => cardRecipes(recipe));
 
-// Va afficher toutes les filtres
+// Va afficher tous les filtres
 displayFilters(recipes);

@@ -97,6 +97,7 @@
         color: white;
         background-color: #3282F7;
         border-radius: 0 5px 5px 0;
+        cursor: pointer;
         img{
             width: 20px;
         }
@@ -109,6 +110,7 @@
         color: white;
         background-color: #68D9A4;
         border-radius: 0 5px 5px 0;
+        cursor: pointer;
         img{
             width: 20px;
         }
@@ -121,12 +123,14 @@
         color: white;
         background-color: #ED6454;
         border-radius: 0 5px 5px 0;
+        cursor: pointer;
         img{
             width: 20px;
         }
     }
     &__aside-ingredients, &__aside-apparatus, &__aside-ustensils{
         background-color: #3282F7;
+        display: none;
         ul{
             list-style: none;
             padding: 10px;

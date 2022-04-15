@@ -1,14 +1,17 @@
 function search(listRecipes, listFiltres) {
 
     let recipesFiltered = [];
-    
+
     listRecipes.forEach(recipe => {
         let verif = true;
 
         listFiltres.ingredient.forEach(ingredient => {
             let mapIngredient = recipe.ingredients.map((i) => i.ingredient);
 
+            // listFiltres.style.visibility = 'hidden';
             if (verif) {
+
+                // listFiltres.style.visibility = 'hidden';
                 verif = mapIngredient.includes(ingredient)
             }
         })
@@ -31,7 +34,6 @@ function search(listRecipes, listFiltres) {
             recipesFiltered.push(recipe);
         }
     })
-
     localStorage.setItem("recipes", JSON.stringify(recipesFiltered));
 
     document.querySelector("#allRecipes").innerHTML = "";

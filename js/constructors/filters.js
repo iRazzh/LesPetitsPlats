@@ -9,8 +9,6 @@
     let allUstensils = [];
     let allAppliance = [];
 
-    console.log(recipes)
-
     recipes.forEach((recipe) => {
         // Set = Stockage de valeurs uniques en évitant les doublons.
         // Les 3 "..." vont permettre de récupérer les données de allIngredients, de recipe.ingredients en prenant l'ingredient en question.

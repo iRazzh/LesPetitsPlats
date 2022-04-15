@@ -112,6 +112,7 @@
   color: white;
   background-color: #3282F7;
   border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 .search-choices--btn-chevron-ingredients img {
   width: 20px;
@@ -124,6 +125,7 @@
   color: white;
   background-color: #68D9A4;
   border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 .search-choices--btn-chevron-apparatus img {
   width: 20px;
@@ -136,12 +138,14 @@
   color: white;
   background-color: #ED6454;
   border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 .search-choices--btn-chevron-ustensils img {
   width: 20px;
 }
 .search-choices__aside-ingredients, .search-choices__aside-apparatus, .search-choices__aside-ustensils {
   background-color: #3282F7;
+  display: none;
 }
 .search-choices__aside-ingredients ul, .search-choices__aside-apparatus ul, .search-choices__aside-ustensils ul {
   list-style: none;

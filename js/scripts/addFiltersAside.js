@@ -1,9 +1,8 @@
 const addFilterAsideBar = (content, className) => {
     const filterAside = document.querySelector(".filter");
-
     // Il va me crée l'image
     const filterSelectedImg = `img/circle-xmark-solid.svg`;
-    let filterSelectedAsideImg = newElt("img", {class: "test", src: `${filterSelectedImg}`});
+    let filterSelectedAsideImg = newElt("img", {class: "removeCroix", src: `${filterSelectedImg}`});
     // Il me crée la div qui va englober l'image + le filtre choisit
     let filterSelectedAside = newElt("div", {class: "filter--researched-" + className});
     // La div va inner le filtre en question
@@ -12,10 +11,55 @@ const addFilterAsideBar = (content, className) => {
     filterSelectedAside.appendChild(filterSelectedAsideImg);
     // La section qui append la div de l'ingrédient choisit. 
     filterAside.appendChild(filterSelectedAside);
+    // Va permettre de remove le filtre en question du localStorage + asideBar au click.
+    filterSelectedAsideImg.addEventListener("click", function() {
+        removeFiltersAside(content, className);
+        // Récupère le parentNode pour le virer au click.
+        let parent = this.parentNode;    
+        parent.remove(filterSelectedAside);
+    })
 }
 
-// Faire le remove (addEventListenenr)
+const removeFiltersAside = (content, className) => {
+    const getStorage = JSON.parse(localStorage.getItem("listFiltre"));
 
-// Enlever le filtre qu'on a cliqué dans le localStorage (récupère le textContent qu'on a dedans, et la className)
-// Appeler la function search (liste complète des recettes)
-// Effacer le badge
+    let resultat = {
+        ingredient : [],
+        ustensil : [],
+        appartus : [],
+    };
+
+    if (className == "ingredients") {
+        resultat.ustensil = getStorage.ustensil;
+        resultat.appartus = getStorage.appartus;
+        getStorage.ingredient.forEach((f) => {
+            if (f != content) {
+                resultat.ingredient.push(f);
+            }
+        })
+    }
+    if (className == "ustensils") {
+        resultat.ingredient = getStorage.ingredient;
+        resultat.appartus = getStorage.appartus;
+        getStorage.ustensil.forEach((f) => {
+            if (f != content) {
+                resultat.ustensil.push(f);
+            }
+        })
+    }
+    if (className == "apparatus") {
+        resultat.ustensil = getStorage.ustensil;
+        resultat.ingredient = getStorage.ingredient;
+        getStorage.appartus.forEach((f) => {
+            if (f != content) {
+                resultat.appartus.push(f);
+            }
+        })
+    }
+    localStorage.setItem("listFiltre", JSON.stringify(resultat));
+    search(recipes, resultat)
+}
+
+function hideElt(elt) {
+    elt.style.visibility = "hidden";
+}
