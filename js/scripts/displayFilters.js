@@ -4,7 +4,6 @@
  */
 const displayFilters = (recipes) => {
     const getAllFilters = allFilters(recipes);
-    // .sort va trier les éléments du tableau "new Set".
 
     if (localStorage.getItem("listFiltre") === null) {
         let tableau = {
@@ -25,19 +24,23 @@ const displayFilters = (recipes) => {
             includedIngredient.push(i);
         }
     })
-
-    let ustensils = getAllFilters.allUstensils.sort();
-    // Faire idem qu'au-desus
-
-
     let apparatus = getAllFilters.allAppliance.sort();
-    // Faire idem
-
-
-
+    let includedApparatus = [];
+    apparatus.forEach((i) => {
+        if(!listFiltre.appartus.includes(i)) {
+            includedApparatus.push(i);
+        }
+    })
+    let ustensils = getAllFilters.allUstensils.sort();
+    let includedUstensils = [];
+    ustensils.forEach((i) => {
+        if(!listFiltre.ustensil.includes(i)) {
+            includedUstensils.push(i);
+        }
+    })
     ShowAllLists(".test--ingredient", includedIngredient, "ingredients")
-    ShowAllLists(".test--ustensils", ustensils, "ustensils")
-    ShowAllLists(".test--appartus", apparatus, "apparatus")
+    ShowAllLists(".test--appartus", includedApparatus, "apparatus")
+    ShowAllLists(".test--ustensils", includedUstensils, "ustensils")
 }
 
 /**
@@ -63,32 +66,19 @@ const ShowAllLists = (targetClass, list, eltClass) => {
             // 2 - Mettre dans LocalStorage ce qu'on a push
             if (classNewElt == "ingredients") {
                 listFiltre.ingredient.push(newElement.textContent);
-
-                console.log(newElement)
-                // newElement.style.visibility = "hidden";
             }
             if (classNewElt == "ustensils") {
                 listFiltre.ustensil.push(newElement.textContent);
-
-                // newElement.style.visibility = "hidden";
             }
             if (classNewElt == "apparatus") {
                 listFiltre.appartus.push(newElement.textContent);
-
-                // newElement.style.visibility = "hidden";
             }
             localStorage.setItem("listFiltre", JSON.stringify(listFiltre));
             const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
 
             // Appelle la fonction "search" dans search.js
-            search(getAllStorageRecipes, listFiltre);        
-
-            // hideElt(newElement);
+            search(getAllStorageRecipes, listFiltre);
         })
         target.appendChild(newElement);
     });
 }
-
-
-
-

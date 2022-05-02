@@ -59,7 +59,3 @@ const removeFiltersAside = (content, className) => {
     localStorage.setItem("listFiltre", JSON.stringify(resultat));
     search(recipes, resultat)
 }
-
-function hideElt(elt) {
-    elt.style.visibility = "hidden";
-}

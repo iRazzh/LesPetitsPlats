@@ -137,6 +137,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             li{
+                cursor: pointer;
                 color: white;
             }
         }

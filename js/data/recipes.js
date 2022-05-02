@@ -165,7 +165,7 @@ const recipes = [
                "unit": "Cuillères à soupe"
            },
            {
-               "ingredient": "gruyère râpé",
+               "ingredient": "Gruyère râpé",
                "quantity": 100,
                "unit": "grammes"
            },
@@ -281,7 +281,7 @@ const recipes = [
                "unit": "grammes"
            },
            {
-                "ingredient": "farine",
+                "ingredient": "Farine",
                 "quantity": 90,
                 "unit": "grammes"
            }
@@ -452,7 +452,7 @@ const recipes = [
                 "unit":"Cuillère à soupe"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "Huile d'olive",
                 "quantity": 2,
                 "unit": "Cuillère à soupe"
             }
@@ -567,7 +567,7 @@ const recipes = [
                 "unit":"tiges"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "Huile d'olive",
                 "quantity": 2,
                 "unit": "Cuillère à soupe"
             }
@@ -693,7 +693,7 @@ const recipes = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "Huile d'olive",
                 "quantity": 1,
                 "unit": "Cuillères à soupe"
             }
@@ -1507,7 +1507,7 @@ const recipes = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "farine",
+                "ingredient": "Farine",
                 "quantity": 40,
                 "unit": "grammes"
             }

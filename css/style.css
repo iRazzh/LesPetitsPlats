@@ -154,6 +154,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 .search-choices__aside-ingredients ul li, .search-choices__aside-apparatus ul li, .search-choices__aside-ustensils ul li {
+  cursor: pointer;
   color: white;
 }
 .search-choices__aside-apparatus {
