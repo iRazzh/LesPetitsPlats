@@ -31,7 +31,6 @@ let cardRecipes = (recipe) => {
     
     // Tous les ingrédients avec 3 conditions
     let eachIngredients = recipe[1].ingredients.map(function(ingredients) {
-
         let quantityObject = Object.prototype.hasOwnProperty.call(ingredients, "quantity");
         let unitObject = Object.prototype.hasOwnProperty.call(ingredients, "unit");
 
