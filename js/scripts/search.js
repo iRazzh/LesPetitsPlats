@@ -77,7 +77,7 @@ const searchInputs = () => {
                 let searchInputResult = newElt("li", {class: "ingredients"});
                 searchInputResult.innerHTML = result;
                 searchInputResult.addEventListener("click", function() {
-
+                    inputIngredients.value = "";
                     addFilterAsideBar(searchInputResult.textContent, searchInputResult.className)
 
                     let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
@@ -102,6 +102,10 @@ const searchInputs = () => {
                 })
                 return asideIngredients.append(searchInputResult)
 			}); 
+        } else {
+            const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
+            let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
+            search(getAllStorageRecipes, listFiltre);
         }
     })
 
@@ -125,7 +129,7 @@ const searchInputs = () => {
                 let searchInputResult = newElt("li", {class: "apparatus"});
                 searchInputResult.innerHTML = result;
                 searchInputResult.addEventListener("click", function() {
-
+                    inputApparatus.value = "";
                     addFilterAsideBar(searchInputResult.textContent, searchInputResult.className)
 
                     let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
@@ -150,9 +154,11 @@ const searchInputs = () => {
                 })
                 return asideApparatus.append(searchInputResult)
 			}); 
+        } else {
+            const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
+            let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
+            search(getAllStorageRecipes, listFiltre);
         }
-
-        // ShowAllLists();
     })
 
     inputUstensils.addEventListener("keyup", (e) => {
@@ -175,6 +181,7 @@ const searchInputs = () => {
                 let searchInputResult = newElt("li", {class: "ustensils"});
                 searchInputResult.innerHTML = result;
                 searchInputResult.addEventListener("click", function() {
+                    inputUstensils.value = "";
 
                     addFilterAsideBar(searchInputResult.textContent, searchInputResult.className)
 
@@ -200,13 +207,18 @@ const searchInputs = () => {
                 })
                 return asideUstensils.append(searchInputResult)
 			}); 
+        } else {
+            const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
+            let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
+            search(getAllStorageRecipes, listFiltre);
+
         }
     })
 }
 searchInputs();
 
 // FUNCTION RECHERCHE SEARCH BAR 
-const searchBar = (recipes) => {
+const searchBar = () => {
     const searchBarInput = document.querySelector(".searchbar--input"),
     allRecipesSection = document.querySelector(".recipes");
 
@@ -214,10 +226,8 @@ const searchBar = (recipes) => {
         if (e.target.value.length >= 3) {
             allRecipesSection.innerHTML = "";
             const query = e.target.value.toLowerCase();
-            console.log(query)
 
             const recipes = JSON.parse(localStorage.getItem("recipes"));
-            console.log(recipes)
 
 			const results = recipes.filter((recipe) => {
 				return (
@@ -225,11 +235,7 @@ const searchBar = (recipes) => {
 				);
 			});
             results.forEach((result) => {
-                console.log(result)
-                let img = newElt("div", {class: "recipes--article__bg-grey", alt: "Image d'une carte"});
-                img.innerHTML = result;
-
-                return allRecipesSection.append(img)
+                cardRecipes(["", result])
             })
         } else {
             let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
@@ -238,6 +244,5 @@ const searchBar = (recipes) => {
             search(getAllStorageRecipes, listFiltre);
         }
     })
-    console.log(recipes)
 }
 searchBar();
