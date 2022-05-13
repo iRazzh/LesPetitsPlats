@@ -217,33 +217,35 @@ const searchInputs = () => {
 }
 searchInputs();
 
-// FUNCTION RECHERCHE SEARCH BAR 
-const searchBar = () => {
-    const searchBarInput = document.querySelector(".searchbar--input"),
-    allRecipesSection = document.querySelector(".recipes");
+// 2ND VERSION SEARCH BAR | ALGO
+const searchBarSecond = () => {
+    const searchBarInput = document.querySelector(".searchbar--input");
+    const allRecipesSection = document.querySelector(".recipes");
 
     searchBarInput.addEventListener("keyup", (e) => {
         if (e.target.value.length >= 3) {
             allRecipesSection.innerHTML = "";
-            const query = e.target.value.toLowerCase();
-
+            const query = e.target.value;
+            const queryLower = query.toLowerCase();
             const recipes = JSON.parse(localStorage.getItem("recipes"));
-            console.log(recipes)
 
-			const results = recipes.filter((recipe) => {
-				return (
-					recipe.name.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query) || recipe.ingredients.hasOwnProperty(query)
-				);
-			});
-            results.forEach((result) => {
-                cardRecipes(["", result])
-            })
+            const results = recipes.filter((recipe) => {
+                if (recipe.name.toLowerCase().includes(queryLower) === true) {
+                    return recipe.name;
+                }
+                else if (recipe.description.toLowerCase().includes(queryLower) === true) {
+                    return recipe.description;
+                }
+            });
+
+            for (let i = 0; i < results.length; i++){
+                cardRecipes(["", results[i]])
+            }
         } else {
             let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
             const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
-            // Appelle la fonction "search" dans search.js
             search(getAllStorageRecipes, listFiltre);
         }
     })
 }
-searchBar();
+searchBarSecond();
