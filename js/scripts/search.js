@@ -230,10 +230,15 @@ const searchBar = () => {
             const recipes = JSON.parse(localStorage.getItem("recipes"));
 
 			const results = recipes.filter((recipe) => {
-				return (
-					recipe.name.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query) || recipe.ingredients.hasOwnProperty(query)
-				);
-			});
+                let verifIngredients = false;
+                recipe.ingredients.forEach((ingr) => {
+                    if (ingr.ingredient.toLowerCase() === query) 
+                        verifIngredients = true;
+                })
+
+                return (recipe.name.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query) || verifIngredients);
+            });
+
             results.forEach((result) => {
                 cardRecipes(["", result])
             })
