@@ -248,4 +248,5 @@ const searchBarSecond = () => {
         }
     })
 }
+
 searchBarSecond();
