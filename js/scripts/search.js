@@ -236,6 +236,12 @@ const searchBarSecond = () => {
                 else if (recipe.description.toLowerCase().includes(queryLower) === true) {
                     return recipe.description;
                 }
+                for(let i = 0;i < recipe.ingredients.length;i++) {
+                    if(recipe.ingredients[i].ingredient.toLowerCase().includes(queryLower))
+                    {
+                        return recipe.ingredients[i]
+                    }
+                }
             });
 
             for (let i = 0; i < results.length; i++){
