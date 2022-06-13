@@ -4,7 +4,6 @@
  */
 const displayFilters = (recipes) => {
     const getAllFilters = allFilters(recipes);
-
     if (localStorage.getItem("listFiltre") === null) {
         let tableau = {
             ingredient : [],
@@ -14,9 +13,7 @@ const displayFilters = (recipes) => {
         
         localStorage.setItem("listFiltre", JSON.stringify(tableau));
     } 
-
     const listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
-
     let ingredients = getAllFilters.allIngredients.sort();
     let includedIngredient = [];
     ingredients.forEach((i) => {

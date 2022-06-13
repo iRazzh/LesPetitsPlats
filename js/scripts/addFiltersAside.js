@@ -22,13 +22,11 @@ const addFilterAsideBar = (content, className) => {
 
 const removeFiltersAside = (content, className) => {
     const getStorage = JSON.parse(localStorage.getItem("listFiltre"));
-
     let resultat = {
         ingredient : [],
         ustensil : [],
         appartus : [],
     };
-
     if (className == "ingredients") {
         resultat.ustensil = getStorage.ustensil;
         resultat.appartus = getStorage.appartus;

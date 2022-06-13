@@ -156,6 +156,9 @@
     grid-template-rows: 1fr;
     margin: 0 auto;
     &--article{
+        height: 425px;
+        overflow: hidden;
+        border-radius: 0 0 5px 5px;
         &__bg-grey{
             background-color: #C7BEBE;
             border-radius: 5px 5px 0 0;
@@ -164,7 +167,7 @@
         &__section-description{
             padding: 0.5rem 1rem 2rem 1rem;
             background-color: #E7E7E7;
-            border-radius: 0 0 5px 5px;
+            height: 100%;
             &--header{
                 display: flex;
                 justify-content: space-between;

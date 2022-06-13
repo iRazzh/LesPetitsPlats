@@ -1,45 +1,34 @@
 const search = (listRecipes, listFiltres) => {
-
     let recipesFiltered = [];
-
     listRecipes.forEach(recipe => {
         let verif = true;
-
         listFiltres.ingredient.forEach(ingredient => {
             let mapIngredient = recipe.ingredients.map((i) => i.ingredient);
             if (verif) {
                 verif = mapIngredient.includes(ingredient)
             }
         })
-
         listFiltres.ustensil.forEach(ustensil => {
             let mapUstensil = recipe.ustensils.map((u) => u);
             if (verif) {
                 verif = mapUstensil.includes(ustensil)
             }
         })
-
         listFiltres.appartus.forEach(appartus => {
             if (verif) {
                 verif = (recipe.appliance == appartus);
             }
         })
-
         if (verif) {
             recipesFiltered.push(recipe);
         }
     })
-
     localStorage.setItem("recipes", JSON.stringify(recipesFiltered));
-
     document.querySelector("#allRecipes").innerHTML = "";
-
     // Mets toutes les recettes en Object
     let allRecipesObject = Object.entries(recipesFiltered);
-
     // Va display toutes les recettes.
     allRecipesObject.forEach(recipe => cardRecipes(recipe));
-
     // Va afficher toutes les filtres
     displayFilters(recipesFiltered);
 }
@@ -56,7 +45,6 @@ const searchInputs = () => {
     asideApparatus = document.querySelector(".test--appartus"),
     asideUstensils = document.querySelector(".test--ustensils");
 
-    
     inputIngredients.addEventListener("keyup", (e) => {
         listIngredients.style.display = "block";
         asideIngredients.innerHTML = "";
@@ -79,7 +67,6 @@ const searchInputs = () => {
                 searchInputResult.addEventListener("click", function() {
                     inputIngredients.value = "";
                     addFilterAsideBar(searchInputResult.textContent, searchInputResult.className)
-
                     let listFiltre = JSON.parse(localStorage.getItem("listFiltre"));
                     let classNewElt = searchInputResult.className;
                     // 2 - Mettre dans LocalStorage ce qu'on a push
@@ -94,11 +81,8 @@ const searchInputs = () => {
                     }
                     localStorage.setItem("listFiltre", JSON.stringify(listFiltre));
                     const getAllStorageRecipes = JSON.parse(localStorage.getItem("recipes"));
-
                     // Appelle la fonction "search" dans search.js
                     search(getAllStorageRecipes, listFiltre);
-
-
                 })
                 return asideIngredients.append(searchInputResult)
 			}); 
